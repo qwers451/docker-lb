@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:alpine
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://user:password@db/mydatabase
+    volumes:
+      - ./app:/app
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+
+volumes:
+  db_data:
