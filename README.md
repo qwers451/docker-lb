@@ -35,3 +35,32 @@ my_flask_app/
 - **app/routes.py**: Содержит маршруты приложения.
 - **Dockerfile**: Описывает процесс сборки Docker-образа и настройки приложения.
 - **docker-compose.yml**: Определяет сервисы приложения и базы данных.
+
+# Процесс запуска приложения
+
+
+   Выполните следующую команду для сборки и запуска приложения:
+
+   ```bash
+   docker-compose up --build
+   ```
+
+   Эта команда создает необходимые Docker-образы и запускает контейнеры для Flask приложения и базы данных PostgreSQL.
+
+ **Проверка состояния контейнеров**:
+
+   Для проверки выполнена следующая команда:
+
+   ```bash
+   docker ps
+   ```
+
+   Эта команда покажет список всех контейнеров. Результат:
+
+   ```plaintext
+   PS C:\Users\qwers> docker ps   
+    CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS         PORTS      NAMES
+    3a493919223c   postgres:alpine   "docker-entrypoint.s…"   12 minutes ago   Up 7 seconds   5432/tcp   pythonproject-db-1
+   ```
+
+   В этом примере видно, что контейнер `pythonproject-db` работает.
